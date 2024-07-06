@@ -1,38 +1,85 @@
-.App {
-  text-align: center;
+/* src/App.css */
+.accordion {
+  width: 60%;
+  /* max-width: 600px; */
+  margin: 0 auto;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.accordion-item {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 10px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.accordion-header {
+  padding: 10px;
+  background-color: #f9f9f9;
+  cursor: pointer;
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.accordion-body {
+  padding: 10px;
+  background-color: #fff;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.accordion-header h2 {
+  margin: 0;
+}
+
+.button-group {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.button-group button {
+  margin-right: 5px;
+}
+
+.accordion-header span {
+  font-weight: bold;
+  color: #007bff;
+}
+
+.inputWithButton {
+  position: relative;
+  height: 50px;
+  width : 100%;
+}
+
+.inputWithButton input{
+  width: 20%;
+  height: 100%;
+  margin: 0 5px;
+}
+
+.inputWithButton>.bug-desc{
+  width: 30%;
+}
+
+.inputWithButton button {
+position: absolute;
+right: 42%;
+top : 5px;
+}
+
+.create-error-text {
+  margin-left: 7%;
+}
+
+.code-container {
+  position: relative;
+}
+
+.code-block {
+  width: 100%;
+}
+
+.code-copy-btn {
+  position: absolute;
+  top: 0;
+  right: 0;
 }
