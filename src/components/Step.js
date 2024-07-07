@@ -2,7 +2,7 @@
 import React from 'react';
 import CodeBlock from './CodeBlock';
 
-function Step({ step, stepIndex, totalSteps, onStepChange }) {
+function Step({ stepIndex, onStepChange }) {
     const someCode = `npm install react-tooltip
 git checkout -b new-branch origin/prod
 some third command`;
@@ -21,7 +21,7 @@ some third command`;
             )}
             {stepIndex === 2 && (
                 <div>
-                    <p>Update the bug task with status changes.</p>
+                    <p>Update the task with status changes.</p>
                 </div>
             )}
             <div className="button-group">

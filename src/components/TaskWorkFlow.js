@@ -1,34 +1,34 @@
-// src/components/BugWorkflow.js
+// src/components/TaskWorkflow.js
 import React, { useState, useEffect } from 'react';
-import { useParams, useHistory } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import Step from './Step';
+import LogoBanner from './LogoBanner';
 
-function BugWorkflow() {
+function TaskWorkflow() {
     const { id } = useParams();
-    const [bug, setBug] = useState(null);
+    const [task, setTask] = useState(null);
     const [activeStep, setActiveStep] = useState(null);
-    const history = useHistory();
 
     useEffect(() => {
-        const savedBugs = JSON.parse(localStorage.getItem('bugs')) || [];
-        const currentBug = savedBugs.find(bug => bug.id === id);
-        setBug(currentBug);
+        const savedTasks = JSON.parse(localStorage.getItem('tasks')) || [];
+        const currentTask = savedTasks.find(task => task.id === id);
+        setTask(currentTask);
         setActiveStep(0); // Set the first step as active initially
     }, [id]);
 
-    const saveBug = (updatedBug) => {
-        const savedBugs = JSON.parse(localStorage.getItem('bugs')) || [];
-        const updatedBugs = savedBugs.map(bug => bug.id === updatedBug.id ? updatedBug : bug);
-        localStorage.setItem('bugs', JSON.stringify(updatedBugs));
-        setBug(updatedBug);
+    const saveTask = (updatedTask) => {
+        const savedTasks = JSON.parse(localStorage.getItem('tasks')) || [];
+        const updatedTasks = savedTasks.map(task => task.id === updatedTask.id ? updatedTask : task);
+        localStorage.setItem('tasks', JSON.stringify(updatedTasks));
+        setTask(updatedTask);
     };
 
     const handleStepChange = (stepIndex, completed) => {
-        const updatedSteps = bug.steps.map((step, index) => 
+        const updatedSteps = task.steps.map((step, index) => 
             index === stepIndex ? { ...step, completed } : step
         );
-        saveBug({ ...bug, steps: updatedSteps });
-        if (stepIndex < (bug.steps.length - 1)) {
+        saveTask({ ...task, steps: updatedSteps });
+        if (stepIndex < (task.steps.length - 1)) {
             toggleStep(stepIndex + 1);
         }
     };
@@ -37,16 +37,17 @@ function BugWorkflow() {
         setActiveStep(activeStep === index ? null : index);
     };
 
-    if (!bug) return <div>Loading...</div>;
+    if (!task) return <div>Loading...</div>;
 
     return (
         <div>
-            <h1>Bug {bug.id} - {bug.title}</h1>
+            <LogoBanner></LogoBanner>
+            <h3>Task {task.id} - {task.title}</h3>
             <div className="accordion">
-                {bug.steps.map((step, index) => (
+                {task.steps.map((step, index) => (
                     <div key={index} className="accordion-item">
                         <div className="accordion-header" onClick={() => toggleStep(index)}>
-                            <h2>{step.name}</h2>
+                            <h4>{step.name}</h4>
                             <span className={step.completed ? 'text-success' : 'text-warning'}>
                                 {step.completed ? 'Completed' : 'Pending'}
                             </span>
@@ -54,9 +55,7 @@ function BugWorkflow() {
                         {activeStep === index && (
                             <div className="accordion-body">
                                 <Step
-                                    step={step}
                                     stepIndex={index}
-                                    totalSteps={bug.steps.length}
                                     onStepChange={handleStepChange}
                                 />
                             </div>
@@ -64,9 +63,8 @@ function BugWorkflow() {
                     </div>
                 ))}
             </div>
-            <button onClick={() => history.push('/')}>Back to Home</button>
         </div>
     );
 }
 
-export default BugWorkflow;
+export default TaskWorkflow;

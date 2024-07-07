@@ -2,7 +2,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Home from './components/Home';
-import BugWorkflow from './components/BugWorkFlow';
+import TaskWorkflow from './components/TaskWorkFlow';
 import './App.css';
 
 function App() {
@@ -11,7 +11,7 @@ function App() {
             <div className="App">
                 <Switch>
                     <Route path="/" exact component={Home} />
-                    <Route path="/bug/:id" component={BugWorkflow} />
+                    <Route path="/task/:id" component={TaskWorkflow} />
                 </Switch>
             </div>
         </Router>

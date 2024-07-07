@@ -1,4 +1,15 @@
 /* src/App.css */
+
+.App {
+  padding: 0 10px;
+}
+
+.logo-container {
+  font-size: 25px;
+  color: beige;
+  background-image: linear-gradient(to right, black , grey);
+}
+
 .accordion {
   width: 60%;
   /* max-width: 600px; */
@@ -56,7 +67,7 @@
   margin: 0 5px;
 }
 
-.inputWithButton>.bug-desc{
+.inputWithButton>.task-desc{
   width: 30%;
 }
 
@@ -82,4 +93,8 @@ top : 5px;
   position: absolute;
   top: 0;
   right: 0;
+}
+
+.hand-cursor {
+  cursor: pointer;
 }
