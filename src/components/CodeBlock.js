@@ -8,7 +8,7 @@ function CodeBlock({ codeToDisplay }) {
             <textarea className="code-block" readOnly value={codeToDisplay} />
             <button
                 onClick={() => navigator.clipboard.writeText(codeToDisplay)}
-                className="btn btn-dark code-copy-btn">
+                className="btn btn-secondary code-copy-btn">
                 Copy
             </button>
         </div>

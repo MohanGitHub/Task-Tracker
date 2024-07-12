@@ -87,6 +87,9 @@ top : 5px;
 
 .code-block {
   width: 100%;
+  color-scheme: light dark;
+  font-size: small;
+  font-family: Consolas,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New;
 }
 
 .code-copy-btn {
